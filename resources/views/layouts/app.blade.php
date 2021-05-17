@@ -42,6 +42,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/about') }}">About us</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/p/create') }}">Add a post</a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav ml-auto mt-10">
                             @guest

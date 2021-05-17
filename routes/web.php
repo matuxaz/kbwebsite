@@ -14,13 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'pages.home');           //naršyklės lange įvedus svetainės adresą bus matomas vaizdas home, esantis kataloge pages
-Route::view('/profile', 'pages.profile');
 Route::view('/settings', 'pages.settings');
 Route::view('/home', 'pages.home');       //naršyklės lange įvedus svetainės adresą + '/home' (pvz., http://localhost:8000/home) bus matomas vaizdas home
 Route::view('/about', 'pages.about');     //naršyklės lange įvedus svetainės adresą + '/about' bus matomas vaizdas about
 Route::view('/admin', 'admin.dashboard'); //naršyklės lange įvedus svetainės adresą + '/admin' bus matomas vaizdas dashboard
 
 Route::resource('settings', App\Http\Controllers\SettingsController::class);
+
+Route::get('/profile/{user}', 'App\Http\Controllers\ProfilesController@index')->name('profile.show');
+Route::get('/profile', 'App\Http\Controllers\MyProfileController@index')->name('myProfile.show');
+
+Route::get('/p/create', 'App\Http\Controllers\PostsController@create');
+Route::post('/p', 'App\Http\Controllers\PostsController@store');
+Route::get('/p/{post}', 'App\Http\Controllers\PostsController@show');
+
+Route::get('/search', 'App\Http\Controllers\HomeController@search');
 /*
 Route::get('/names', App\Http\Controllers\NamesController::class);
 Route::get('/admin/names', [App\Http\Controllers\Admin\NamesController::class, 'index']);

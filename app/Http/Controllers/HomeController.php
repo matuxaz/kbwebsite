@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,5 +22,19 @@ class HomeController extends Controller
         else {
             return redirect('/');
         }
+    }
+
+    public function search(){
+
+
+        $name = $_GET['userName'];
+        $user = User::where('name', $name)->first();
+
+        if(is_null($user))
+            return redirect('/');
+
+        return view('pages/profile', [
+            'user' => $user,
+        ]);
     }
 }
