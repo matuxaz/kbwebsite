@@ -59,12 +59,6 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/admin/names') }}" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>Names</p>
-                        </a>
-                    </li>
                     @role('admin')
                     <li class="nav-item">
                         <a href="{{ url('/admin/users') }}" class="nav-link">
@@ -76,6 +70,12 @@
                         <a href="{{ url('/admin/roles') }}" class="nav-link">
                             <i class="nav-icon fas fa-key"></i>
                             <p>Roles</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/posts') }}" class="nav-link">
+                            <i class="nav-icon fas fa-image"></i>
+                            <p>Posts</p>
                         </a>
                     </li>
                     <li class="nav-item">

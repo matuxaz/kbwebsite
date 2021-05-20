@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Image;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -12,13 +14,13 @@ class PostsController extends Controller
     }
 
     public function create(){
-        return view('posts.create');
+        return view('posts.create', );
     }
 
     public function store(){
         $data = request()->validate([
             'title' => 'required',
-            'image' => 'required|image',
+            'image' => 'required|image|size:20000',
             'description' => 'required',
         ]);
 
@@ -36,6 +38,16 @@ class PostsController extends Controller
     }
 
     public function show(\App\Models\Post $post){
+
+
+
         return view('posts.show', compact('post'));
+    }
+
+    public function delete($id)
+    {
+        $posts = Post::findOrFail($id);
+        $posts->delete();  // įvykdoma SQL užklausa, kuri pašalina duomenis iš DB
+        return redirect('/profile');
     }
 }

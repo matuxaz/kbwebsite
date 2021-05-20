@@ -26,12 +26,11 @@ class HomeController extends Controller
 
     public function search(){
 
-
         $name = $_GET['userName'];
         $user = User::where('name', $name)->first();
 
         if(is_null($user))
-            return redirect('/');
+            return redirect('/')->with('error', 'User with this name was not found');
 
         return view('pages/profile', [
             'user' => $user,

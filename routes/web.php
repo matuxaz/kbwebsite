@@ -19,7 +19,7 @@ Route::view('/home', 'pages.home');       //naršyklės lange įvedus svetainės
 Route::view('/about', 'pages.about');     //naršyklės lange įvedus svetainės adresą + '/about' bus matomas vaizdas about
 Route::view('/admin', 'admin.dashboard'); //naršyklės lange įvedus svetainės adresą + '/admin' bus matomas vaizdas dashboard
 
-Route::resource('settings', App\Http\Controllers\SettingsController::class);
+Route::get('/settings/posts', 'App\Http\Controllers\SettingsController@posts');
 
 Route::get('/profile/{user}', 'App\Http\Controllers\ProfilesController@index')->name('profile.show');
 Route::get('/profile', 'App\Http\Controllers\MyProfileController@index')->name('myProfile.show');
@@ -27,8 +27,11 @@ Route::get('/profile', 'App\Http\Controllers\MyProfileController@index')->name('
 Route::get('/p/create', 'App\Http\Controllers\PostsController@create');
 Route::post('/p', 'App\Http\Controllers\PostsController@store');
 Route::get('/p/{post}', 'App\Http\Controllers\PostsController@show');
+Route::delete('/p/{post}', 'App\Http\Controllers\PostsController@delete');
 
 Route::get('/search', 'App\Http\Controllers\HomeController@search');
+
+
 /*
 Route::get('/names', App\Http\Controllers\NamesController::class);
 Route::get('/admin/names', [App\Http\Controllers\Admin\NamesController::class, 'index']);
@@ -39,6 +42,8 @@ Route::get('/admin/names/{id}', [App\Http\Controllers\Admin\NamesController::cla
 Route::patch('/admin/names/{id}', [App\Http\Controllers\Admin\NamesController::class, 'update']);
 Route::delete('/admin/names/{id}', [App\Http\Controllers\Admin\NamesController::class, 'destroy']);
 */
+Route::resource('settings', App\Http\Controllers\SettingsController::class);
+
 Route::get('redirects', App\Http\Controllers\HomeController::class);
 Route::group(['middleware' => ['role:admin|librarian']], function () {
     Route::get('/admin', function () {
@@ -47,6 +52,7 @@ Route::group(['middleware' => ['role:admin|librarian']], function () {
     Route::resource('admin/names', App\Http\Controllers\Admin\NamesController::class);
     Route::resource('admin/roles', App\Http\Controllers\Admin\RolesController::class);
     Route::resource('admin/users', App\Http\Controllers\Admin\UsersController::class);
+    Route::resource('admin/posts', App\Http\Controllers\Admin\postsController::class);
     Route::resource('admin/countries', App\Http\Controllers\Admin\CountriesController::class);
 });
 /*

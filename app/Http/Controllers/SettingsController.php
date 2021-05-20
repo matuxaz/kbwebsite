@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 use Auth;
 use Image;
 use App\Models\User;
+use App\Models\Post;
+
 
 class SettingsController extends Controller
 {
     public function index(Request $request){
         return view('pages/settings', array('user' => Auth::user()));
     }
+
+    public function posts(){
+        return view('posts.view', array('user' => Auth::user()));
+    }
+
     public function store(Request $request){
 
         if($request->hasFile('avatar')){
@@ -27,4 +34,13 @@ class SettingsController extends Controller
         }else{return redirect()->back();}
 
     }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        return redirect('/settings/posts');
+    }
+
 }

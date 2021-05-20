@@ -8,38 +8,26 @@
             @csrf
 
             <div class="row">
-                <div class="col-8 offset-2">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <div>
+                        <x-jet-label for="title" value="{{ __('Title') }}" />
+                    </div>
+                    <div>
+                        <x-jet-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
+                    </div>
 
-                    <div class="form-group row">
-
-                        <div>
-                            <x-jet-label for="title" value="{{ __('Title') }}" />
-                            <x-jet-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
-                        </div>
-
-                        @if($errors->has('title'))
-                            <span class="invalid-feedback" role="alert">
+                    @if($errors->has('title'))
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('title') }}</strong>
                         </span>
-                        @endif
-
-                    </div>
-                    <div class="row">
-                        <label for="image" class="col-md-4 col-form-label">Post image</label>
-                        <input type="file", class="form-control-file" id="image" name="image">
-
-                        @if($errors->has('image'))
-                            <strong>{{ $errors->first('image') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-
-                    <div class="row pt-3"></div>
-                    <button class="btn btn-primary">Add new post</button>
+                    @endif
 
                     <div>
                         <x-jet-label for="description" value="{{ __('description') }}" />
-                        <x-jet-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus autocomplete="description" />
+                    </div>
+                    <div>
+                        <x-jet-input id="description" class="block mt-1 w-full" type="text" name="description" style="height:50px;" :value="old('description')" required autofocus autocomplete="description" />
                     </div>
 
                     @if($errors->has('description'))
@@ -47,9 +35,19 @@
                                 <strong>{{ $errors->first('description') }}</strong>
                         </span>
                     @endif
-                </div>
 
+                    <input type="file", class="form-control-file pt-2" style="position:absolute; " id="image" name="image">
+
+                    @if($errors->has('image'))
+                        <strong>{{ $errors->first('image') }}</strong>
+                        </span>
+                    @endif
+                <button class="btn btn-primary" style="position: absolute; bottom:-95px;">Add new post</button>
+                </div>
+                <div class="col-4">
+                </div>
             </div>
+
         </form>
     </div>
 @endsection
