@@ -30,7 +30,7 @@ Route::get('/p/{post}', 'App\Http\Controllers\PostsController@show');
 Route::delete('/p/{post}', 'App\Http\Controllers\PostsController@delete');
 
 Route::get('/search', 'App\Http\Controllers\HomeController@search');
-
+Route::get('/admin/data', 'App\Http\Controllers\Admin\DataController@index');
 
 /*
 Route::get('/names', App\Http\Controllers\NamesController::class);

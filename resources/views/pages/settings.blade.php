@@ -16,7 +16,11 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                     <div class="col-sm-offset-3 col-sm-3">
-                    <input type="Submit" class="pull-right btn btn-sm btn-primary">
+                    <input type="Submit" style="position:absolute; right:-65px; bottom:-60px " class=" btn btn-sm btn-primary">
+                        @if($errors->has('image'))
+                            <strong>{{ $errors->first('image') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </form>
             </div>

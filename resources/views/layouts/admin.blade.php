@@ -84,6 +84,12 @@
                             <p>Countries</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/data') }}" class="nav-link">
+                            <i class="nav-icon fa fa-meh"></i>
+                            <p>Fake data</p>
+                        </a>
+                    </li>
                     @endrole
                 </ul>
             </nav>

@@ -20,7 +20,7 @@ class PostsController extends Controller
     public function store(){
         $data = request()->validate([
             'title' => 'required',
-            'image' => 'required|image|size:20000',
+            'image' => 'required|image|max:4000',
             'description' => 'required',
         ]);
 
@@ -48,6 +48,6 @@ class PostsController extends Controller
     {
         $posts = Post::findOrFail($id);
         $posts->delete();  // įvykdoma SQL užklausa, kuri pašalina duomenis iš DB
-        return redirect('/profile');
+        return redirect('/settings/posts');
     }
 }

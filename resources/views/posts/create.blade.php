@@ -8,7 +8,6 @@
             @csrf
 
             <div class="row">
-                <div class="col-4"></div>
                 <div class="col-4">
                     <div>
                         <x-jet-label for="title" value="{{ __('Title') }}" />
@@ -36,15 +35,17 @@
                         </span>
                     @endif
 
-                    <input type="file", class="form-control-file pt-2" style="position:absolute; " id="image" name="image">
+                    <input type="file", class="form-control-file pt-5" style="position:absolute; " id="image" name="image">
 
                     @if($errors->has('image'))
                         <strong>{{ $errors->first('image') }}</strong>
                         </span>
                     @endif
-                <button class="btn btn-primary" style="position: absolute; bottom:-95px;">Add new post</button>
+
                 </div>
+                <div class="col-4"></div>
                 <div class="col-4">
+                    <button class="btn btn-primary" style="position: absolute; bottom:-95px;">Add new post</button>
                 </div>
             </div>
 
