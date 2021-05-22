@@ -42,13 +42,13 @@
                 <div class="form-group">
                     {!! Form::label('description', 'Description: ', ['class' => 'col-sm-3']) !!}
                     <div class="col-sm-6">
-                        {!! Form::number('description', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                        {!! Form::text('description', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     </div>
                 </div>
                 <div class="form-group">
                     {!! Form::label('image', 'Image: ', ['class' => 'col-sm-3']) !!}
                     <div class="col-sm-6">
-                        {!! Form::number('image', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                        {!! Form::text('image', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     </div>
                 </div>
                 {!! Form::close() !!}
